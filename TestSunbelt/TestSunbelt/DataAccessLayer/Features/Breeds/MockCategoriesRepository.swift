@@ -8,7 +8,11 @@
 
 import Foundation
 
-class MockCategoriesRepository: CategoriesRepository {
+class MockBreedsRepository: BreedsRepository {
+    func getCategories<T>(completionHandler: @escaping (T?, Error?) -> Void) where T : Decodable {
+        
+    }
+    
     func userInfo<T>(completionHandler: @escaping (T?, Error?) -> Void) where T : Decodable {
         
     }

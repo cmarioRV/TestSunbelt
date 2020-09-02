@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
+protocol DashboardCoordinatorDelegate: class {
+    func finish(coordinator: Coordinator)
+}
+
 class DashboardCoordinator: Coordinator {
+    
+    weak var delegate: DashboardCoordinatorDelegate?
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -17,10 +23,21 @@ class DashboardCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = ProspectsViewModel(domain: domain)
-        let viewController = ProspectsTableViewController(viewModel: viewModel)
+        guard let viewModel = AppDelegate.diContainer.resolve(BreedsViewModelType.self) else { return }
+        let viewController = BreedsViewController(viewModel)
         viewController.delegate = self
-        //        let viewController = storyboard.instantiateViewController(withIdentifier: "prospects")
         navigationController.viewControllers = [viewController]
+    }
+    
+    func showBreedDetail(_ name: String) {
+        guard let viewModel = AppDelegate.diContainer.resolve(BreedDetailViewModelType.self) else { return }
+        let viewController = BreedDetailViewController(viewModel, name: name)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+extension DashboardCoordinator: BreedsViewControllerDelegate {
+    func cellSelected(name: String) {
+        showBreedDetail(name)
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 class BaseRepository {
     private let applicationJson = "application/json"
     private let headerContentType = "Content-Type"
+    let apiKey = "33a14455-7a53-4da1-bffe-570f824bfad3" //It must be stored in keychain, placed here for testing purposes
     private let baseApi = AppDelegate.diContainer.resolve(BaseApi.self)
     
     func getApiUrl() -> String {

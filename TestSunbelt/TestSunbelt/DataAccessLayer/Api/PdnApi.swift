@@ -10,6 +10,6 @@ import Foundation
 
 class PdnApi : BaseApi {
     func apiURL() -> String {
-        return "https://api.thecatapi.com/v1//"
+        return "https://api.thecatapi.com/v1"
     }
 }

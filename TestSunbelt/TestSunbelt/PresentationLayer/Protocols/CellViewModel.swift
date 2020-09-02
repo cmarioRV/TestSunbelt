@@ -1,5 +1,5 @@
 //
-//  DevApi.swift
+//  CellViewModel.swift
 //  TestSunbelt
 //
 //  Created by Mario Rúa on 1/09/20.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class DevApi : BaseApi {
-    func apiURL() -> String {
-        return "https://api.thecatapi.com/v1"
-    }
+protocol CellViewModel {}
+
+protocol ViewModelPressible {
+    var cellPressed: (()->Void)? { get set }
 }

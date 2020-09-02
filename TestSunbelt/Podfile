@@ -6,5 +6,6 @@ target 'TestSunbelt' do
   use_frameworks!
 
   # Pods for TestSunbelt
-  pod 'Swinject'  
+  pod 'Swinject'
+  pod 'MBProgressHUD', '~> 1.2.0'  
 end

@@ -26,22 +26,13 @@ final class AppCoordinator: Coordinator {
         let coordinator = DashboardCoordinator(navigationController: navigationController)
         coordinator.delegate = self
         coordinator.start()
-        //        childCoordinators.append(coordinator)
         add(child: coordinator)
     }
 }
 
-extension AppCoordinator: LoginCoordinatorDelegate {
+extension AppCoordinator: DashboardCoordinatorDelegate {
     func finish(coordinator: Coordinator) {
         remove(child: coordinator)
-        showDashboard()
-    }
-}
-
-extension AppCoordinator: ProspectsCoordinatorDelegate {
-    func closeSession(coordinator: Coordinator) {
-        remove(child: coordinator)
-        AppParams.setUserIsLogged(isLogged: false)
-        showLogin()
+//        showLogin()
     }
 }
