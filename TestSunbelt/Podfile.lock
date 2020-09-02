@@ -1,0 +1,26 @@
+PODS:
+  - MBProgressHUD (1.2.0)
+  - SDWebImage (5.9.0):
+    - SDWebImage/Core (= 5.9.0)
+  - SDWebImage/Core (5.9.0)
+  - Swinject (2.7.1)
+
+DEPENDENCIES:
+  - MBProgressHUD (~> 1.2.0)
+  - SDWebImage (~> 5.0)
+  - Swinject
+
+SPEC REPOS:
+  trunk:
+    - MBProgressHUD
+    - SDWebImage
+    - Swinject
+
+SPEC CHECKSUMS:
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+
+PODFILE CHECKSUM: f95976662d1d545e44778b442755a1e5ca258be4
+
+COCOAPODS: 1.9.3
