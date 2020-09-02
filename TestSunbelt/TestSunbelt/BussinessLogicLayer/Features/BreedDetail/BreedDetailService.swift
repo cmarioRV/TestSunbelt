@@ -18,4 +18,8 @@ class BreedDetailService {
     func getBreedDetail(name: String, completion: @escaping ([BreedDetail]?, Error?) -> Void) {
         repository.getBreed(name: name, completionHandler: completion)
     }
+    
+    func getBreedImage(breeId: String, completion: @escaping ([BreedImageContainer]?, Error?) -> Void) {
+        repository.getImageUrl(breeId: breeId, completionHandler: completion)
+    }
 }

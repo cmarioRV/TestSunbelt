@@ -10,7 +10,6 @@
 		47CCF6EB0A585DA67D9A7364 /* Pods_TestSunbelt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ABE3D0E98D95FF24CF0ECF /* Pods_TestSunbelt.framework */; };
 		8B344F8124FEF9E9000C9289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B344F8024FEF9E9000C9289 /* AppDelegate.swift */; };
 		8B344F8324FEF9E9000C9289 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B344F8224FEF9E9000C9289 /* SceneDelegate.swift */; };
-		8B344F8524FEF9E9000C9289 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B344F8424FEF9E9000C9289 /* ViewController.swift */; };
 		8B344F8A24FEF9ED000C9289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B344F8924FEF9ED000C9289 /* Assets.xcassets */; };
 		8B344F8D24FEF9ED000C9289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B344F8B24FEF9ED000C9289 /* LaunchScreen.storyboard */; };
 		8B344FA024FEFDAE000C9289 /* DependencyRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B344F9F24FEFDAE000C9289 /* DependencyRegister.swift */; };
@@ -35,6 +34,7 @@
 		8B344FD024FF1A5B000C9289 /* BreedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B344FCF24FF1A5B000C9289 /* BreedService.swift */; };
 		8B344FD224FF1D4C000C9289 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B344FD124FF1D4C000C9289 /* Breed.swift */; };
 		8B7797A224FFB5AE00AE2C43 /* BreedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7797A124FFB5AE00AE2C43 /* BreedDetailViewController.swift */; };
+		8B7797A524FFD1BE00AE2C43 /* BreedImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7797A424FFD1BE00AE2C43 /* BreedImageContainer.swift */; };
 		8B93E58B24FF2C060064D39C /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93E58A24FF2C060064D39C /* CellConfigurable.swift */; };
 		8B93E58D24FF2C170064D39C /* BreedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93E58C24FF2C170064D39C /* BreedCell.swift */; };
 		8B93E58F24FF2CD40064D39C /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93E58E24FF2CD40064D39C /* UITableViewCell+Extensions.swift */; };
@@ -52,7 +52,6 @@
 		8B344F7D24FEF9E9000C9289 /* TestSunbelt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSunbelt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B344F8024FEF9E9000C9289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B344F8224FEF9E9000C9289 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8B344F8424FEF9E9000C9289 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B344F8924FEF9ED000C9289 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B344F8C24FEF9ED000C9289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B344F8E24FEF9ED000C9289 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		8B344FCF24FF1A5B000C9289 /* BreedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedService.swift; sourceTree = "<group>"; };
 		8B344FD124FF1D4C000C9289 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 		8B7797A124FFB5AE00AE2C43 /* BreedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailViewController.swift; sourceTree = "<group>"; };
+		8B7797A424FFD1BE00AE2C43 /* BreedImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedImageContainer.swift; sourceTree = "<group>"; };
 		8B93E58A24FF2C060064D39C /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		8B93E58C24FF2C170064D39C /* BreedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCell.swift; sourceTree = "<group>"; };
 		8B93E58E24FF2CD40064D39C /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 				8B344F9624FEFBC6000C9289 /* DataAccessLayer */,
 				8B344F8024FEF9E9000C9289 /* AppDelegate.swift */,
 				8B344F8224FEF9E9000C9289 /* SceneDelegate.swift */,
-				8B344F8424FEF9E9000C9289 /* ViewController.swift */,
 				8B344F8B24FEF9ED000C9289 /* LaunchScreen.storyboard */,
 				8B344F8E24FEF9ED000C9289 /* Info.plist */,
 			);
@@ -239,6 +238,7 @@
 			children = (
 				8B344FD124FF1D4C000C9289 /* Breed.swift */,
 				8B93E59C24FF51140064D39C /* BreedDetail.swift */,
+				8B7797A424FFD1BE00AE2C43 /* BreedImageContainer.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -498,11 +498,11 @@
 				8B93E58D24FF2C170064D39C /* BreedCell.swift in Sources */,
 				8B344FD224FF1D4C000C9289 /* Breed.swift in Sources */,
 				8B7797A224FFB5AE00AE2C43 /* BreedDetailViewController.swift in Sources */,
-				8B344F8524FEF9E9000C9289 /* ViewController.swift in Sources */,
 				8B344FBC24FF0521000C9289 /* DashboardCoordinator.swift in Sources */,
 				8B344FB224FF0286000C9289 /* RemoteBreedsRepository.swift in Sources */,
 				8B344FD024FF1A5B000C9289 /* BreedService.swift in Sources */,
 				8B344FB024FF0264000C9289 /* BreedsRepository.swift in Sources */,
+				8B7797A524FFD1BE00AE2C43 /* BreedImageContainer.swift in Sources */,
 				8B344F8124FEF9E9000C9289 /* AppDelegate.swift in Sources */,
 				8B344FC224FF14FC000C9289 /* BaseViewModel.swift in Sources */,
 				8B93E59424FF4F790064D39C /* BreedDetailRepository.swift in Sources */,

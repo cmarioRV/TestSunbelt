@@ -20,7 +20,7 @@ class Coordinator {
     }
     
     func remove(child: Coordinator) {
-        guard let index = children.index(where: { $0 === child }) else {
+        guard let index = children.firstIndex(where: { $0 === child }) else {
             return
         }
         

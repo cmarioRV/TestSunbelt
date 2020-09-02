@@ -12,4 +12,8 @@ class MockBreedDetailRepository: BreedDetailRepository {
     func getBreed<T>(name: String, completionHandler: @escaping (T?, Error?) -> Void) where T : Decodable {
         
     }
+    
+    func getImageUrl<T>(breeId: String, completionHandler: @escaping (T?, Error?) -> Void) where T : Decodable {
+        
+    }
 }

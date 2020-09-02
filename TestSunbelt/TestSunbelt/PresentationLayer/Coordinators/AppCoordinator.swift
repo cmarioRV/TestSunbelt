@@ -12,7 +12,6 @@ import UIKit
 final class AppCoordinator: Coordinator {
     
     let navigationController: UINavigationController
-    //    var childCoordinators : [Coordinator] = []
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -33,6 +32,5 @@ final class AppCoordinator: Coordinator {
 extension AppCoordinator: DashboardCoordinatorDelegate {
     func finish(coordinator: Coordinator) {
         remove(child: coordinator)
-//        showLogin()
     }
 }

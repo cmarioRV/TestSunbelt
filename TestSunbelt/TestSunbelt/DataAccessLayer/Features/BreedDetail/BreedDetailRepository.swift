@@ -10,4 +10,5 @@ import Foundation
 
 protocol BreedDetailRepository {
     func getBreed<T: Decodable>(name: String, completionHandler: @escaping (T?, Error?) -> Void)
+    func getImageUrl<T: Decodable>(breeId: String, completionHandler: @escaping (T?, Error?) -> Void)
 }

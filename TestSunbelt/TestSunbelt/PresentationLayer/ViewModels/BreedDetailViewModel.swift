@@ -16,6 +16,7 @@ internal protocol BreedDetailViewModelOutputs {
     var isBussy: Dynamic<Bool> { get }
     var errorStr: Dynamic<String> { get }
     var breedDetail: Dynamic<BreedDetail?> { get }
+    var breedUrl: Dynamic<String?> { get }
 }
 
 internal protocol BreedDetailViewModelType {
@@ -31,13 +32,14 @@ internal final class BreedDetailViewModel: BaseViewModel, BreedDetailViewModelTy
     var isBussy = Dynamic(false)
     var errorStr = Dynamic("")
     var breedDetail: Dynamic<BreedDetail?>
-    
+    var breedUrl: Dynamic<String?>
     
     private let breedDetailService: BreedDetailService
     
     init(breedDetailService: BreedDetailService) {
         self.breedDetailService = breedDetailService
         self.breedDetail = Dynamic(nil)
+        self.breedUrl = Dynamic("")
         super.init()
     }
     
@@ -48,14 +50,26 @@ internal final class BreedDetailViewModel: BaseViewModel, BreedDetailViewModelTy
         
         breedDetailService.getBreedDetail(name: name) { [weak self] (breedDetails, error) in
             guard let weakSelf = self else { return }
-            guard let breedDetails = breedDetails else {
+            guard let breedDetails = breedDetails, let breedDetail = breedDetails.first else {
                 weakSelf.isBussy.value = false
                 weakSelf.errorStr.value = weakSelf.handleError(error: error)
                 return
             }
             
-            weakSelf.isBussy.value = false
-            self?.breedDetail.value = breedDetails.first
+            guard let breedId = breedDetail.id else {
+                weakSelf.isBussy.value = false
+                weakSelf.breedDetail.value = breedDetail
+                return
+            }
+            
+            weakSelf.breedDetailService.getBreedImage(breeId: breedId) { (breedImageContainer, error) in
+                if error == nil {
+                    weakSelf.breedUrl.value = breedImageContainer?.first?.url
+                }
+                
+                weakSelf.isBussy.value = false
+                weakSelf.breedDetail.value = breedDetails.first
+            }
         }
     }
 }

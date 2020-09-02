@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class BreedDetailViewController: UIViewController {
     
@@ -60,20 +61,20 @@ class BreedDetailViewController: UIViewController {
         hStackView.translatesAutoresizingMaskIntoConstraints = false
         hStackView.alignment = .center
         hStackView.axis = .horizontal
-        hStackView.distribution = .fill
-        hStackView.spacing = 50
+        hStackView.distribution = .fillEqually
+        hStackView.spacing = 0
         
         leftStackView.translatesAutoresizingMaskIntoConstraints = false
-        hStackView.alignment = .center
-        hStackView.axis = .vertical
-        hStackView.distribution = .fill
-        hStackView.spacing = 5
+        leftStackView.alignment = .center
+        leftStackView.axis = .vertical
+        leftStackView.distribution = .fill
+        leftStackView.spacing = 5
         
         rightStackView.translatesAutoresizingMaskIntoConstraints = false
-        hStackView.alignment = .center
-        hStackView.axis = .vertical
-        hStackView.distribution = .fill
-        hStackView.spacing = 5
+        rightStackView.alignment = .center
+        rightStackView.axis = .vertical
+        rightStackView.distribution = .fill
+        rightStackView.spacing = 5
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
@@ -93,10 +94,15 @@ class BreedDetailViewController: UIViewController {
         dogFriendlyLabel.numberOfLines = 0
         
         breedImageView.translatesAutoresizingMaskIntoConstraints = false
-        childFriendlyImageView.translatesAutoresizingMaskIntoConstraints = false
-        dogFriendlyImageView.translatesAutoresizingMaskIntoConstraints = false
+        breedImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         
-        leftStackView.addArrangedSubview(childFriendlyLabel)
+        childFriendlyImageView.translatesAutoresizingMaskIntoConstraints = false
+        childFriendlyImageView.image = UIImage(named: "childIcon")
+        
+        dogFriendlyImageView.translatesAutoresizingMaskIntoConstraints = false
+        dogFriendlyImageView.image = UIImage(named: "dogIcon")
+        
+        leftStackView.addArrangedSubview(childFriendlyImageView)
         leftStackView.addArrangedSubview(childFriendlyLabel)
         
         rightStackView.addArrangedSubview(dogFriendlyImageView)
@@ -115,26 +121,26 @@ class BreedDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             breedImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             breedImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            breedImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            breedImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             breedImageView.heightAnchor.constraint(equalTo: breedImageView.widthAnchor, multiplier: 0.6, constant: 0)
         ])
         
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: breedImageView.bottomAnchor, constant: 20),
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40)
         ])
         
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40)
         ])
         
         NSLayoutConstraint.activate([
             hStackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
             hStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            hStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            hStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40)
         ])
         
         childFriendlyImageView.widthAnchor.constraint(equalTo: childFriendlyImageView.heightAnchor, multiplier: 1, constant: 0).isActive = true
@@ -160,8 +166,25 @@ class BreedDetailViewController: UIViewController {
                 guard let breedDetail = breedDetail else { return }
                 
                 self?.nameLabel.text = breedDetail.name
+                self?.descriptionLabel.text = breedDetail.description
                 self?.childFriendlyLabel.text = (breedDetail.child_friendly != nil) ? String(breedDetail.child_friendly!) : "N/A"
                 self?.dogFriendlyLabel.text = (breedDetail.dog_friendly != nil) ? String(breedDetail.dog_friendly!) : "N/A"
+            }
+        }
+        
+        viewModel.outputs.breedUrl.bind { [weak self] (urlString) in
+            DispatchQueue.main.async {
+                guard let urlString = urlString, let url = URL(string: urlString) else { return }
+                
+                self?.breedImageView.sd_setImage(with: url, completed: { (image, error, cacheType, url) in
+                    DispatchQueue.main.async {
+                        if image != nil {
+                            self?.breedImageView.image = image
+                        } else {
+                            self?.breedImageView.image = UIImage(named: "imageNoAvailable")
+                        }
+                    }
+                })
             }
         }
     }
